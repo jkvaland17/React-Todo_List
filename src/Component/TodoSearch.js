@@ -8,13 +8,9 @@ const TodoSearch = () => {
   const [input, setInput] = useState("");
   const [list, setList] = useState([]);
   let hendelsubmit = () => {
-    if (input === "") {
-      alert("Please Enter Items");
-    } else {
-      list.push(input);
-      localStorage.setItem("list", JSON.stringify(list));
-      setInput("");
-    }
+    input === "" ? alert("Please Enter Items") : list.push(input);
+    localStorage.setItem("list", JSON.stringify(list));
+    setInput("");
   };
 
   const handleDelete = (index) => {

@@ -5,12 +5,8 @@ const ThTodo = () => {
   const [thStore, setthStore] = useState([]);
   //nested todo start
   let thchange = () => {
-    if (thTodo === "") {
-      alert("Please Enter Items");
-    } else {
-      thStore.push(thTodo);
-      setThTodo("");
-    }
+    thTodo === "" ? alert("Please Enter Items") : thStore.push(thTodo);
+    setThTodo("");
   };
   let thdel = (id) => {
     thStore.splice(id, 1);
@@ -34,7 +30,7 @@ const ThTodo = () => {
               <div key={index}>
                 <span>{thitem}</span>
               </div>
-              <button onClick={()=>thdel(index)}>X</button>
+              <button onClick={() => thdel(index)}>X</button>
             </div>
           );
         })}

@@ -9,12 +9,8 @@ const SecTodo = () => {
 
   //main todo start
   let sechendelsubmit = () => {
-    if (secTodo === "") {
-      alert("Please Enter Items");
-    } else {
-      secStore.push(secTodo);
-      setSecTodo("");
-    }
+    secTodo === "" ? alert("Please Enter Items") : secStore.push(secTodo);
+    setSecTodo("");
   };
 
   const sechandleDelete = (id) => {
