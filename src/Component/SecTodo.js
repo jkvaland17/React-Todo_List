@@ -8,9 +8,10 @@ const SecTodo = () => {
   let oldData = JSON.parse(listData);
 
   //main todo start
-  let sechendelsubmit = () => {
+  let sechendelsubmit = (e) => {
     secTodo === "" ? alert("Please Enter Items") : secStore.push(secTodo);
     setSecTodo("");
+    e.preventDefault();
   };
 
   const sechandleDelete = (id) => {

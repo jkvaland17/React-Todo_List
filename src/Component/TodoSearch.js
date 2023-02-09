@@ -1,21 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../App.scss";
 
 let img = "https://picsum.photos/200/300";
 
+//const items = JSON.parse(localStorage.getItem("list"));
+
 const TodoSearch = () => {
   const [input, setInput] = useState("");
   const [list, setList] = useState([]);
-  let hendelsubmit = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("list"));
+    if (items) {
+      setItems(items);
+    }
+  }, [input]);
+
+  let hendelsubmit = (e) => {
     input === "" ? alert("Please Enter Items") : list.push(input);
-    localStorage.setItem("list", JSON.stringify(list));
     setInput("");
+    e.preventDefault();
+
+    localStorage.setItem("list", JSON.stringify(list));
   };
 
   const handleDelete = (index) => {
-    list.splice(index, 1);
-    setList([...list]);
+    items.splice(index, 1);
+    setList([...items]);
+    localStorage.setItem("list", JSON.stringify([...items]));
   };
 
   return (
@@ -32,25 +46,31 @@ const TodoSearch = () => {
           />
           <button onClick={hendelsubmit}>+</button>
         </div>
-        <div className="todo_show">
-          {list.map((item, index) => (
-            <div className="todo_box">
-              <div key={index}>
-                <img src={img} alt="img"></img>
-                <br></br>
-                <h3 className="text">
-                  <NavLink to="/SecTodo">{item}</NavLink>
-                </h3>
-                <button
-                  className="item_btn"
-                  onClick={() => handleDelete(index)}
-                >
-                  Delete
-                </button>
+        {items == null ? (
+          <h1>value note asigned</h1>
+        ) : (
+          <div className="todo_show">
+            {items.map((item, index) => (
+              <div className="todo_box">
+                <div key={index}>
+                  <img src={img} alt="img"></img>
+                  <br></br>
+                  <h3 className="text">
+                    <NavLink to="/SecTodo" key={index}>
+                      {item}
+                    </NavLink>
+                  </h3>
+                  <button
+                    className="item_btn"
+                    onClick={() => handleDelete(index)}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );
