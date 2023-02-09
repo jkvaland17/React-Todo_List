@@ -1,0 +1,51 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Unbounded", cursive;
+}
+.main_box {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  margin: 0 auto;
+  margin-top: 5rem;
+  border-radius: 1rem;
+  box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.32);
+  border: none;
+
+  .input_val {
+    outline: none;
+  }
+  .todo_show {
+    display: flex;
+    text-align: center;
+    .todo_box {
+      margin: 1rem;
+      //background-color: grey;
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 2px solid black;
+      .text {
+        margin: 0;
+        text-transform: uppercase;
+      }
+      .item_btn {
+        width: 100%;
+      }
+    }
+  }
+}
+.back_btn {
+  width: 10%;
+  background-color: rgb(0, 0, 0);
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  margin: 1rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}

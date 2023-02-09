@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import TodoSearch from "./Component/TodoSearch";
+import { Routes, Route } from "react-router-dom";
+import SecTodo from "./Component/SecTodo";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<TodoSearch />}></Route>
+        <Route path="/SecTodo" element={<SecTodo />}></Route>
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;
